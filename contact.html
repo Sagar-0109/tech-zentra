@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Tech Zentra</title>
+    <meta name="description" content="Get in touch with Tech Zentra. Send us your enquiry and we'll get back to you within 24 hours. Check our FAQ for common questions." />
+    <meta name="theme-color" content="#050816" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact | Tech Zentra" />
+    <meta property="og:description" content="Let's build your next step. Contact Tech Zentra today." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: { bg: "#050816", bg2: "#0A1024" },
+              accent: { primary: "#6C63FF", secondary: "#00D9FF", success: "#00F5A0" },
+              ink: { primary: "#F8FAFC", secondary: "#94A3B8" },
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+              display: ["Space Grotesk", "Inter", "sans-serif"],
+              mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div id="cursor-glow" aria-hidden="true"></div>
+    <div class="bg-effects" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-blob bg-blob-1"></div>
+      <div class="bg-blob bg-blob-2"></div>
+      <canvas id="particle-canvas"></canvas>
+    </div>
+    <a href="#page-contact" class="skip-link">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <header id="navbar" class="fixed top-0 left-0 z-50 w-full transition-all duration-500">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Primary">
+        <a href="/index.html" class="brand-logo flex items-center gap-2" aria-label="Tech Zentra home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+              <path d="M16 2L29 9.5V22.5L16 30L3 22.5V9.5L16 2Z" stroke="url(#zg)" stroke-width="1.6" />
+              <path d="M11 12L16 22L21 12" stroke="url(#zg)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              <defs><linearGradient id="zg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6C63FF" /><stop offset="1" stop-color="#00D9FF" /></linearGradient></defs>
+            </svg>
+          </span>
+          <span class="font-display text-lg font-700 tracking-tight text-ink-primary">TECH<span class="text-accent-secondary">ZENTRA</span></span>
+        </a>
+        <ul class="hidden items-center gap-8 lg:flex">
+          <li><a href="/index.html" class="nav-link" data-page="home">Home</a></li>
+          <li><a href="/programs.html" class="nav-link" data-page="programs">Programs</a></li>
+          <li><a href="/career.html" class="nav-link" data-page="career">Career</a></li>
+          <li><a href="/about.html" class="nav-link" data-page="about">About</a></li>
+          <li><a href="/contact.html" class="nav-link" data-page="contact">Contact</a></li>
+        </ul>
+        <div class="hidden lg:block">
+          <a href="/contact.html" class="btn-primary magnetic">Start Learning <span class="arrow">→</span></a>
+        </div>
+        <button id="menu-toggle" class="menu-toggle lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="mobile-menu lg:hidden">
+        <div class="flex flex-col gap-1 px-6 pb-6">
+          <a href="/index.html" class="mobile-link">Home</a>
+          <a href="/programs.html" class="mobile-link">Programs</a>
+          <a href="/career.html" class="mobile-link">Career</a>
+          <a href="/about.html" class="mobile-link">About</a>
+          <a href="/contact.html" class="mobile-link">Contact</a>
+          <a href="/contact.html" class="btn-primary mt-4 w-full text-center">Start Learning →</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="page-contact" class="pt-24">
+      <!-- PAGE HEADER -->
+      <section class="section pb-0">
+        <div class="mx-auto max-w-3xl px-6 lg:px-8">
+          <div class="reveal-up text-center">
+            <span class="badge">CONTACT US</span>
+            <h1 class="mt-6 font-display text-4xl font-700 leading-tight text-ink-primary sm:text-5xl md:text-6xl">
+              LET'S BUILD<br /><span class="gradient-text">YOUR NEXT STEP.</span>
+            </h1>
+            <p class="mx-auto mt-4 max-w-xl text-lg text-ink-secondary">Tell us about your goals and we'll help you find the right path. We respond within 24 hours.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FORM -->
+      <section class="section">
+        <div class="mx-auto max-w-3xl px-6 lg:px-8">
+          <form class="contact-form reveal-up" id="contact-form" novalidate>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="form-group">
+                <label for="cf-name">Name</label>
+                <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                <span class="form-error" id="err-name"></span>
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email</label>
+                <input type="email" id="cf-email" name="email" required autocomplete="email" />
+                <span class="form-error" id="err-email"></span>
+              </div>
+              <div class="form-group">
+                <label for="cf-phone">Phone</label>
+                <input type="tel" id="cf-phone" name="phone" autocomplete="tel" />
+                <span class="form-error" id="err-phone"></span>
+              </div>
+              <div class="form-group">
+                <label for="cf-program">Interested Program</label>
+                <select id="cf-program" name="program" required>
+                  <option value="">Select a program</option>
+                  <option>AWS &amp; Cloud Computing</option>
+                  <option>DevOps Engineering</option>
+                  <option>Full Stack Python</option>
+                  <option>Full Stack Java</option>
+                  <option>Data Science</option>
+                  <option>Cyber Security</option>
+                  <option>AI / Machine Learning</option>
+                  <option>Software Development</option>
+                </select>
+                <span class="form-error" id="err-program"></span>
+              </div>
+              <div class="form-group">
+                <label for="cf-experience">Experience Level</label>
+                <select id="cf-experience" name="experience" required>
+                  <option value="">Select level</option>
+                  <option>Beginner</option>
+                  <option>Intermediate</option>
+                  <option>Advanced</option>
+                </select>
+                <span class="form-error" id="err-experience"></span>
+              </div>
+              <div class="form-group sm:col-span-2">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" rows="4" required></textarea>
+                <span class="form-error" id="err-message"></span>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary mt-6 w-full magnetic" id="contact-submit">
+              <span class="btn-label">Send Enquiry</span> <span class="arrow">→</span>
+            </button>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section">
+        <div class="mx-auto max-w-3xl px-6 lg:px-8">
+          <div class="reveal-up text-center">
+            <span class="badge">FAQ</span>
+            <h2 class="mt-6 font-display text-3xl font-700 text-ink-primary sm:text-4xl md:text-5xl">QUESTIONS?<br /><span class="gradient-text">ASK TECH ZENTRA.</span></h2>
+          </div>
+          <div class="terminal-window mt-12 reveal-up">
+            <div class="terminal-header">
+              <span class="term-dot term-red"></span><span class="term-dot term-yellow"></span><span class="term-dot term-green"></span>
+              <span class="term-title">faq@techzentra: ~</span>
+            </div>
+            <div class="terminal-body faq-terminal" id="faq-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
+          <div class="lg:col-span-2">
+            <a href="/index.html" class="flex items-center gap-2" aria-label="Tech Zentra home">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+                  <path d="M16 2L29 9.5V22.5L16 30L3 22.5V9.5L16 2Z" stroke="url(#zg2)" stroke-width="1.6" />
+                  <path d="M11 12L16 22L21 12" stroke="url(#zg2)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                  <defs><linearGradient id="zg2" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6C63FF" /><stop offset="1" stop-color="#00D9FF" /></linearGradient></defs>
+                </svg>
+              </span>
+              <span class="font-display text-lg font-700 tracking-tight text-ink-primary">TECH<span class="text-accent-secondary">ZENTRA</span></span>
+            </a>
+            <p class="mt-4 max-w-xs text-ink-secondary">Learn Technology. Build Reality.</p>
+            <p class="mt-2 max-w-xs text-sm text-ink-secondary">Master the technologies powering modern careers.</p>
+          </div>
+          <div>
+            <h3 class="footer-heading">Programs</h3>
+            <ul class="mt-4 space-y-2">
+              <li><a href="/programs.html" class="footer-link">AWS &amp; Cloud</a></li>
+              <li><a href="/programs.html" class="footer-link">DevOps</a></li>
+              <li><a href="/programs.html" class="footer-link">Full Stack Python</a></li>
+              <li><a href="/programs.html" class="footer-link">Full Stack Java</a></li>
+              <li><a href="/programs.html" class="footer-link">Data Science</a></li>
+              <li><a href="/programs.html" class="footer-link">Cyber Security</a></li>
+              <li><a href="/programs.html" class="footer-link">AI / ML</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Company</h3>
+            <ul class="mt-4 space-y-2">
+              <li><a href="/about.html" class="footer-link">About</a></li>
+              <li><a href="/about.html" class="footer-link">Trainers</a></li>
+              <li><a href="/programs.html" class="footer-link">Projects</a></li>
+              <li><a href="/career.html" class="footer-link">Careers</a></li>
+              <li><a href="/contact.html" class="footer-link">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Resources</h3>
+            <ul class="mt-4 space-y-2">
+              <li><a href="/about.html" class="footer-link">Blog</a></li>
+              <li><a href="/career.html" class="footer-link">Roadmaps</a></li>
+              <li><a href="/about.html" class="footer-link">Free Resources</a></li>
+              <li><a href="/contact.html" class="footer-link">FAQs</a></li>
+            </ul>
+            <h3 class="footer-heading mt-6">Social</h3>
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+              <a href="#" class="social-link" aria-label="Instagram">ig</a>
+              <a href="#" class="social-link" aria-label="YouTube">yt</a>
+              <a href="#" class="social-link" aria-label="GitHub">gh</a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 border-t border-white/10 pt-6 text-center text-sm text-ink-secondary">© 2026 Tech Zentra. All Rights Reserved.</div>
+      </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
